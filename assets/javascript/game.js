@@ -36,20 +36,24 @@ let players = [obiWanKenobi, lukeSkywalker, darthSidious, darthMaul];
 $("#lukeskywalker").on("click", function () {
     console.log("Luke Skywalker Selected");
     showCharacter(1);
+    playerSelection(1);
 
 });
 $("#obiwan").on("click", function () {
     console.log("Obi-Wan Kenobi Selected");
     showCharacter(2);
+    playerSelection(2);
 
 });
 $("#darthmaul").on("click", function () {
     console.log("Darth Maul Selected");
     showCharacter(3);
+    playerSelection(3);
 });
 $("#darthsidious").on("click", function () {
     console.log("Darth Sidious Selected");
     showCharacter(4);
+    playerSelection(4);
 });
 $("#attack").on("click", function () {
     console.log("Attack Button Selected");
@@ -76,9 +80,13 @@ $("#darthsidious3").on("click", function () {
 });
 
 function playerSelection(hidePlayers) {
+    if(hidePlayers !== 1)
     $("#lukeskywalker").hide().parent().hide();
+    if(hidePlayers !== 2)
     $("#obiwan").hide().parent().hide();
+    if(hidePlayers !== 3)
     $("#darthmaul").hide().parent().hide();
+    if(hidePlayers !== 4)
     $("#darthsidious").hide().parent().hide();
 };
 

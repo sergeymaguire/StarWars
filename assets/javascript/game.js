@@ -1,9 +1,10 @@
+"use strict"
 var characterSelected = false;
 var defenderSelected = false;
 var attackCharacter = {};
 var defender = {};
 var enemiesDefeated = 0;
-gameOver = false;
+
 // ----- Characters----- //
 var obiWanKenobi = {
     name: "Obi-Wan Kenobi",
@@ -57,6 +58,7 @@ $("#darthsidious").on("click", function () {
 });
 $("#attack").on("click", function () {
     console.log("Attack Button Selected");
+
 });
 $("#restart").on("click", function () {
     console.log("Restart Button Selected");
@@ -64,30 +66,30 @@ $("#restart").on("click", function () {
 });
 $("#lukeskywalker3").on("click", function () {
     console.log("luke skywalker enemy clicked");
-    hideEnemyDefender(1);
+    hideEnemiesExcept(1);
 });
 $("#obiwan3").on("click", function () {
     console.log("obiwan enemy clicked");
-    hideEnemyDefender(2);
+    hideEnemiesExcept(2);
 });
 $("#darthmaul3").on("click", function () {
     console.log("darth maul enemy clicked");
-    hideEnemyDefender(3);
+    hideEnemiesExcept(3);
 });
 $("#darthsidious3").on("click", function () {
     console.log("darthsidious enemy clicked");
-    hideEnemyDefender(4);
+    hideEnemiesExcept(4);
 });
 
 function playerSelection(hidePlayers) {
-    if(hidePlayers !== 1)
-    $("#lukeskywalker").hide().parent().hide();
-    if(hidePlayers !== 2)
-    $("#obiwan").hide().parent().hide();
-    if(hidePlayers !== 3)
-    $("#darthmaul").hide().parent().hide();
-    if(hidePlayers !== 4)
-    $("#darthsidious").hide().parent().hide();
+    if (hidePlayers !== 1)
+        $("#lukeskywalker").hide().parent().hide();
+    if (hidePlayers !== 2)
+        $("#obiwan").hide().parent().hide();
+    if (hidePlayers !== 3)
+        $("#darthmaul").hide().parent().hide();
+    if (hidePlayers !== 4)
+        $("#darthsidious").hide().parent().hide();
 };
 
 function showCharacter(characterToShow) {
@@ -119,17 +121,62 @@ function hideYourEnemiesToAttack() {
     $("#darthsidious3").hide().parent().hide();
 };
 
-function hideEnemyDefender(EnemyToShow) {
-    if(EnemyToShow !== 1)
-    $("#lukeskywalker4").hide().parent().hide();
-    if(EnemyToShow !== 2)
-    $("#obiwan4").hide().parent().hide();
-    if(EnemyToShow !== 3)
-    $("#darthmaul4").hide().parent().hide();
-    if(EnemyToShow !== 4)
-    $("#darthsidious4").hide().parent().hide();
+function hideEnemiesExcept(enemyToShow) {
+    if (enemyToShow === 1) {
+        $("#lukeskywalker3").hide().parent().hide();
+        $("#lukeskywalker4").show().parent().show();
+        
+         $("#obiwan4").hide().parent().hide();
+         $("#darthmaul4").hide().parent().hide();
+         $("#darthsidious4").hide().parent().hide();
+        return;
+    };
+
+    if (enemyToShow === 2) {
+        $("#obiwan3").hide().parent().hide();
+        $("#obiwan4").show().parent().show();
+        
+         $("#lukeskywalker4").hide().parent().hide();
+         $("#darthmaul4").hide().parent().hide();
+         $("#darthsidious4").hide().parent().hide();
+        return;
+        
+    };
+    if (enemyToShow === 3) {
+        $("#darthmaul3").hide().parent().hide();
+        $("#darthmaul4").show().parent().show();
+        
+         $("#lukeskywalker4").hide().parent().hide();
+         $("#obiwan4").hide().parent().hide();
+         $("#darthsidious4").hide().parent().hide();
+        return;
+    };
+    if (enemyToShow === 4) {
+        $("#darthsidious3").hide().parent().hide();
+        $("#darthsidious4").show().parent().show();
+        
+         $("#lukeskywalker4").hide().parent().hide();
+         $("#obiwan4").hide().parent().hide();
+         $("#darthmaul4").hide().parent().hide();
+        return;
+    };
 };
 
 function gameRestart() {
     location.reload();
 };
+// function hide (){
+//     $("#lukeskywalker2").hide().parent().hide();
+//     $("#lukeskywalker3").hide().parent().hide();
+//     $("#lukeskywalker4").hide().parent().hide();
+//     $("#obiwan2").hide().parent().hide();
+//     $("#obiwan3").hide().parent().hide();
+//     $("#obiwan4").hide().parent().hide();
+//     $("#darthmaul2").hide().parent().hide();
+//     $("#darthmaul3").hide().parent().hide();
+//     $("#darthmaul4").hide().parent().hide();
+//     $("#darthsidious2").hide().parent().hide();
+//     $("#darthsidious3").hide().parent().hide();
+//     $("#darthsidious4").hide().parent().hide();
+// };
+// hide();

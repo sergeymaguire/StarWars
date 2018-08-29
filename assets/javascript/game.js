@@ -1,4 +1,3 @@
-// ----- Global Variables ----- //
 var characterSelected = false;
 var defenderSelected = false;
 var attackCharacter = {};
@@ -8,7 +7,7 @@ gameOver = false;
 // ----- Characters----- //
 var obiWanKenobi = {
     name: "Obi-Wan Kenobi",
-    health: 120,
+    health: 220,
     baseAttack: 8,
     attack: 8
 };
@@ -33,14 +32,16 @@ var darthMaul = {
     baseAttack: 25,
     attack: 25
 };
-
+let players = [obiWanKenobi, lukeSkywalker, darthSidious, darthMaul];
 $("#lukeskywalker").on("click", function () {
     console.log("Luke Skywalker Selected");
     showCharacter(1);
+
 });
 $("#obiwan").on("click", function () {
     console.log("Obi-Wan Kenobi Selected");
     showCharacter(2);
+
 });
 $("#darthmaul").on("click", function () {
     console.log("Darth Maul Selected");
@@ -57,42 +58,70 @@ $("#restart").on("click", function () {
     console.log("Restart Button Selected");
     gameRestart();
 });
-// gameStart();
-function gameStart() {
-    showCharacter(-1);
-    hideYourEnemiesToAttack();
-    hideEnemyDefender();
+$("#lukeskywalker3").on("click", function () {
+    console.log("luke skywalker enemy clicked");
+    hideEnemyDefender(1);
+});
+$("#obiwan3").on("click", function () {
+    console.log("obiwan enemy clicked");
+    hideEnemyDefender(2);
+});
+$("#darthmaul3").on("click", function () {
+    console.log("darth maul enemy clicked");
+    hideEnemyDefender(3);
+});
+$("#darthsidious3").on("click", function () {
+    console.log("darthsidious enemy clicked");
+    hideEnemyDefender(4);
+});
+
+function playerSelection(hidePlayers) {
+    $("#lukeskywalker").hide().parent().hide();
+    $("#obiwan").hide().parent().hide();
+    $("#darthmaul").hide().parent().hide();
+    $("#darthsidious").hide().parent().hide();
 };
 
-function showCharacter(showYourPlayer) {
-    if (showYourPlayer !== 1)
+function showCharacter(characterToShow) {
+    if (characterToShow === 1)
+        $("#lukeskywalker3").hide().parent().hide();
+    else
         $("#lukeskywalker2").hide().parent().hide();
 
-    if (showYourPlayer !== 2)
-        $("#obiwan2").hide().parent().hide();
+    if (characterToShow === 2)
+        $("#obiwan3").hide().parent().hide();
+    else
+        $("#obiwan2").hide().parent().hide()
 
-    if (showYourPlayer !== 3)
-        $("#darthmaul2").hide().parent().hide();
+    if (characterToShow === 3)
+        $("#darthmaul3").hide().parent().hide();
+    else
+        $("#darthmaul2").hide().parent().hide()
 
-    if (showYourPlayer !== 4)
-        $("#darthsidious2").hide().parent().hide();
+    if (characterToShow === 4)
+        $("#darthsidious3").hide().parent().hide();
+    else
+        $("#darthsidious2").hide().parent().hide()
 };
 
 function hideYourEnemiesToAttack() {
-    
     $("#lukeskywalker3").hide().parent().hide();
     $("#obiwan3").hide().parent().hide();
     $("#darthmaul3").hide().parent().hide();
     $("#darthsidious3").hide().parent().hide();
 };
 
-function hideEnemyDefender() {
+function hideEnemyDefender(EnemyToShow) {
+    if(EnemyToShow !== 1)
     $("#lukeskywalker4").hide().parent().hide();
+    if(EnemyToShow !== 2)
     $("#obiwan4").hide().parent().hide();
+    if(EnemyToShow !== 3)
     $("#darthmaul4").hide().parent().hide();
+    if(EnemyToShow !== 4)
     $("#darthsidious4").hide().parent().hide();
 };
 
 function gameRestart() {
-    gameStart();
+    location.reload();
 };
